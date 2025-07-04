@@ -33,6 +33,6 @@ export class RecipesController {
   @Delete('/:id')
   @UseGuards(AuthGuard('jwt'))
   async deleteRecipe(@GetUser() user,@Param('id') id: number) {
-    return this.recipesService.deleteRecipe(id, user.userId);
+    return this.recipesService.deleteRecipe(+id, user.userId);
   }
 }

@@ -48,7 +48,6 @@ export class RecipesService {
   }
 
   async deleteRecipe(id: number, userId: number) {
-    console.log(userId);
     
     const recipe = await this.prisma.recipe.findUnique({
       where: { id },
@@ -60,8 +59,6 @@ export class RecipesService {
     }
 
     if (recipe.userId !== userId) {
-      console.log(userId, recipe);
-      
       throw new ForbiddenException('You can only delete your own recipes');
     }
 
